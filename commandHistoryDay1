@@ -1,0 +1,61 @@
+1  # Add Docker's official GPG key:
+    2  sudo apt-get update
+    3  sudo apt-get install ca-certificates curl
+    4  sudo install -m 0755 -d /etc/apt/keyrings
+    5  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+    6  sudo chmod a+r /etc/apt/keyrings/docker.asc
+    7  # Add the repository to Apt sources:
+    8  echo   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+    9    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   10  sudo apt-get update
+   11  sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+   12  docker --version
+   13  docker images
+   14  sudo docker images
+   15  sudo su
+   16  docker images
+   17  docker pull ubuntu
+   18  docker images
+   19  docker run -it --name appleContainer ubuntu /bin/bash
+   20  docker ps
+   21  docker ps -a
+   22  docker start appleContainer
+   23  docker ps
+   24  docker stop appleContainer
+   25  docker ps
+   26  docker ps -a
+   27  docker run -td --name orangeContainer ubuntu
+   28  docker ps
+   29  docker ps -a
+   30  docker exec -it orangeContainer /bin/bash
+   31  docker ps
+   32  docker commit orangeContainer orangeImage
+   33  docker commit orangeContainer orangeimage
+   34  docker images
+   35  docker run -td --name demoOrangeContainer orangeimage
+   36  docker ps
+   37  docker exec -it demoOrangeContainer /bin/bash
+   38  docker images
+   39  docker login -u
+   40  docker login
+   41  docker login -u puneetgavri
+   42  docker images
+   43  docker tag orangeimage puneetgavri/orangeimage:v1
+   44  docker images
+   45  docker push puneetgavri/orangeimage:v1
+   46  docker images
+   47  docker rmi orangeimage
+   48  docker rmi puneetgavri/orangeimage
+   49  docker rmi puneetgavri/orangeimage:v1
+   50  docker ps
+   51  docker kill demoOrangeContainer
+   52  docker rmi puneetgavri/orangeimage:v1
+   53  docker ps -a
+   54  docker rm demoOrangeContainer
+   55  docker ps -a
+   56  docker rmi puneetgavri/orangeimage:v1
+   57  dcoker images
+   58  docker images
+   59  docker run -td --name bananacontainer puneetgavri/orangeimage:v1
+   60  docker ps
+   61  docker exec -it bananacontainer /bin/bash
