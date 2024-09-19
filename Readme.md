@@ -93,23 +93,39 @@ docker network ls
 default bridge network:
 
 docker run -d --name c1 myimage01
+
 docker run -d --name c2 myimage01
+
 docker container inspect c1 | grep IPAdd
+
 docker container inspect c2 | grep IPAdd
+
 docker exec c1 ping 172.17.0.3
+
 docker exec c2 ping 172.17.0.2
+
 
 custom bridge network:
 
+
 docker network create mynetwork --driver bridge --subnet 20.21.0.0/16 --gateway 20.21.0.1
+
 docker network ls
+
 docker run -d --name c3 --network mynetwork myimage01
+
 docker run -d --name c4 --network mynetwork myimage01
+
 docker container inspect c3 | grep IPAdd
+
 docker container inspect c4 | grep IPAdd
+
 docker exec c3 ping 20.21.0.3
+
 docker exec c4 ping 20.21.0.2
+
 docker exec c4 ping 172.17.0.2
+
 
 
 none:
