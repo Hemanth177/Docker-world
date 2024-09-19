@@ -92,9 +92,9 @@ docker network ls
 
 default bridge network:
 
-docker run -d --name c1 myimage01
+docker run -td --name c1 myimage01
 
-docker run -d --name c2 myimage01
+docker run -td --name c2 myimage01
 
 docker container inspect c1 | grep IPAdd
 
@@ -112,9 +112,9 @@ docker network create mynetwork --driver bridge --subnet 20.21.0.0/16 --gateway 
 
 docker network ls
 
-docker run -d --name c3 --network mynetwork myimage01
+docker run -td --name c3 --network mynetwork myimage01
 
-docker run -d --name c4 --network mynetwork myimage01
+docker run -td --name c4 --network mynetwork myimage01
 
 docker container inspect c3 | grep IPAdd
 
