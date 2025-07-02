@@ -29,7 +29,7 @@ docker volume create my_volume
 
 #### **Step 2: Start a Container Using the Volume**  
 ```sh
-docker run -dit --name my_container -v my_volume:/data ubuntu
+docker run -dt --name my_container -v my_volume:/data ubuntu
 ```
 
 #### **Step 3: Verify the Volume Inside the Container**  
@@ -45,7 +45,7 @@ exit
 ```sh
 docker stop my_container
 docker rm my_container
-docker run -dit --name new_container -v my_volume:/data ubuntu
+docker run -dt --name new_container -v my_volume:/data ubuntu
 docker exec -it new_container cat /data/test.txt  # Data persists!
 ```
 
@@ -70,7 +70,7 @@ echo "Hello from Host!" > /home/user/data/hostfile.txt
 
 #### **Step 2: Start a Container Using the Host Directory**  
 ```sh
-docker run -dit --name my_host_container -v /home/user/data:/data ubuntu
+docker run -dt --name my_host_container -v /home/user/data:/data ubuntu
 ```
 
 #### **Step 3: Verify Data Access in the Container**  
@@ -83,7 +83,7 @@ docker exec -it my_host_container cat /data/hostfile.txt  # Output: Hello from H
 docker exec -it my_host_container bash
 echo "Written from Container" >> /data/hostfile.txt
 exit
-cat /home/user/data/hostfile.txt  # Host will now have the additional text!
+cat /home/user/data/hostfile.txt  # Host will now have the addtional text!
 ```
 
 ---
@@ -125,7 +125,7 @@ docker volume create locker_volume
 
 ### **Step 2: Create a Writer Container**
 ```sh
-docker run -dit --name locker_writer -v locker_volume:/locker ubuntu
+docker run -dt --name locker_writer -v locker_volume:/locker ubuntu
 ```
 
 ### **Step 3: Write Data into the Locker**
@@ -135,7 +135,7 @@ docker exec -it locker_writer bash -c 'echo "Secret Data" > /locker/secret.txt'
 
 ### **Step 4: Create a Reader Container**
 ```sh
-docker run -dit --name locker_reader -v locker_volume:/locker ubuntu
+docker run -dt --name locker_reader -v locker_volume:/locker ubuntu
 ```
 
 ### **Step 5: Read Data from the Locker**
