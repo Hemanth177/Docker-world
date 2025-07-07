@@ -64,8 +64,8 @@ Verify the network:
 ### Step 3: Run Containers on a Custom Network
 Run two containers in the same custom network:
 ```sh
- docker run -dit --name container1 --network my_bridge_network alpine sh
- docker run -dit --name container2 --network my_bridge_network alpine sh
+ docker run -td --name container1 --network my_bridge_network alpine sh
+ docker run -td --name container2 --network my_bridge_network alpine sh
 ```
 
 ### Step 4: Test Communication Between Containers
@@ -100,7 +100,7 @@ To connect containers directly to a physical network:
 
 Run a container using this network:
 ```sh
- docker run -dit --name macvlan_container --network my_macvlan_network alpine sh
+ docker run -td --name macvlan_container --network my_macvlan_network alpine sh
 ```
 
 ## 5. Using Docker Networking with Docker Compose
